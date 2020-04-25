@@ -1,0 +1,159 @@
+@startuml diagrama
+package TP {
+    skinparam WrapWidth 300
+    class App {
+        {static}scan : Scanner
+        arquitecto1 : Arquitecto
+        maestro1 : Maestro
+        obrero1 : Obrero
+        obrero2 : Obrero
+        empleados : ArrayList
+        empresa1 : Empresa
+        obraDomestica : ODomestica
+        hotel : Hotel
+        comercio : Comercio
+        obras : ArrayList
+        {static}+main()
+        {static}+pToContinue()
+    }
+    abstract class Empleado {
+        -nombre : String
+        -dni : String
+        -telefono : String
+        -costo : double
+        +<<constructor>> Empleado(nombre : String, dni : String, telefono : String, costo : double)
+        +getNombre() : String
+        +getDni() : String
+        +getTelefono() : String
+        +getCosto() : double
+        +toString() : String
+    }
+    class Empresa {
+        -nombre : String
+        -empleados : ArrayList
+        -obrasHechas : ArrayList
+        +<<constructor>> Empresa(nombre : String)
+        +<<constructor>> Empresa(nombre : String, empleados : ArrayList)
+        +<<constructor>> Empresa(nombre : String, empleados : ArrayList, obrasHechas : ArrayList)
+        +getNombre() : String
+        +getEmpleados() : ArrayList
+        +getObrasHechas() : ArrayList
+        +nuevaObra(obra : Obra)
+        +agregarObras(obras : ArrayList)
+        +setObras(obras : ArrayList)
+    }
+    abstract class Obra {
+        -direccion : String
+        -mCuadrados : int
+        -tEstimado : int
+        -costoPorM : double
+        -personal : ArrayList
+        arquitectos : long
+        nuevosArquitectos : long
+        maestros : long
+        nuevosMaestros : long
+        obreros : long
+        nuevosObreros : long
+        costoEmpleados : double = 0
+        +<<constructor>> Obra(direccion : String, mCuadrados : int, estimado : int, costoPorM : double, personal : ArrayList)
+        -limitCheck() : boolean
+        +getDireccion() : String
+        +getMCuadrados() : int
+        +getTEstimado() : int
+        +getCostoPorM() : double
+        +getPersonal() : ArrayList
+        +precioTotal() : double
+        +toString() : String
+    }
+
+    package empleados {
+        class Arquitecto {
+            -matricula : String
+            +<<constructor>> Arquitecto(nombre : String, dni : String, telefono : String, matricula : String)
+            +getMatricula() : String
+            +crearPlanos() : String
+            +toString() : String
+        }
+        class Maestro {
+            -edad : int
+            +<<constructor>> Maestro(nombre : String, dni : String, telefono : String, edad : int)
+            +getEdad() : int
+            +construir() : String
+            +toString() : String
+        }
+        class Obrero {
+            -edad : int
+            +<<constructor>> Obrero(nombre : String, dni : String, telefono : String, edad : int)
+            +getEdad() : int
+            +construir() : String
+            +toString() : String
+        }
+
+        package interfaz {
+            class Construccion{
+                {abstract}+construir() : String
+            }
+        }
+    }
+
+    package obras {
+        abstract class OComercial {
+            -nombre : String
+            +<<construir>> OComercial(direccion : String, mCuadrados : int, estimado : int, costoPorM : double, personal : ArrayList)
+            +getNombre() : String
+            +toString() : String
+        }
+        class ODomestica {
+            -habitaciones : int
+            +<<constructor>> ODomestica(direccion : String, mCuadrados : int, estimado : int, costoPorM : double, personal : ArrayList, habitaciones : int)
+            +getHabitaciones() : int
+            +toString() : String
+        }
+
+        package comerciales {
+            class Comercio {
+                -rubro : String
+                +<<constructor>> Comercio(direccion : String, mCuadrados : int, estimado : int, costoPorM : double, personal : ArrayList)
+                +getRubro() : String
+                +toString() : String
+            }
+            class Hotel {
+                -pisos : int
+                +<<constructor>> Hotel(direccion : String, mCuadrados : int, estimado : int, costoPorM : double, personal : ArrayList)
+                +getPisos() : int
+                +toString() : int
+            }
+        }
+    }
+}
+
+App *--> Scanner : scan
+App *--> Arquitecto : arquitecto1
+App *--> Maestro : maestro1
+App *--> Obrero : obrero1
+App *--> Obrero : obrero2
+App *--> ArrayList : empleados
+App *--> Empresa : empresa1
+App *--> ODomestica : obraDomestica
+App *--> Hotel : hotel
+App *--> Comercio : comercio
+App *--> ArrayList : obras
+Empresa *--> ArrayList : empleados
+Empresa *--> ArrayList : obrasHechas
+Obra *--> ArrayList : personal
+Obra *--> Arquitecto : arquitectos
+Obra *--> Arquitecto : nuevosArquitectos
+Obra *--> Maestro : maestros
+Obra *--> Maestro : nuevosMaestros
+Obra *--> Obrero : obreros
+Obra *--> Obrero : nuevosObreros
+Empleado <|- Arquitecto
+Empleado <|- Maestro
+Construccion <|- Maestro
+Empleado <|- Obrero
+Construccion <|- Obrero
+Obra <|- OComercial
+Obra <|- ODomestica
+OComercial <|- Comercio
+OComercial <|- Hotel
+@enduml

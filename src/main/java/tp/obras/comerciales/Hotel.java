@@ -22,5 +22,4 @@ public class Hotel extends OComercial {
     public String toString() {
         return "Hotel: " + super.toString() + " pisos: " + getPisos();
     }
-
 }

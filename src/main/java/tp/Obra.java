@@ -75,6 +75,16 @@ public abstract class Obra {
         return this.personal;
     }
 
+    public String personalToString() {
+        StringBuffer buffer = new StringBuffer();
+        for (Empleado empleado : this.personal) {
+            buffer.append(empleado.toString());
+            buffer.append("\n");
+        }
+
+        return buffer.toString();
+    }
+
     public double precioTotal() {
         double costoEmpleados = 0;
         if (getPersonal() != null) {

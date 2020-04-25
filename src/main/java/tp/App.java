@@ -65,15 +65,9 @@ public class App {
 
         ///////////////////////////////////////////////////////////// E
 
-        for (Empleado empleado : hotel.getPersonal()) {
-            System.out.println("\n" + empleado.toString());
-        }
+        System.out.println(hotel.personalToString());
 
         pToContinue(scan);
-
-        ///////////////////////////////////////////////////////////// F
-
-        
 
         scan.close();
 

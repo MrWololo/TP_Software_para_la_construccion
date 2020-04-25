@@ -2,23 +2,26 @@ package tp.empleados;
 
 import tp.Empleado;
 
-public class Arquitecto extends Empleado{
+public class Arquitecto extends Empleado {
 
-    private int matricula;
-  
-    public Arquitecto(String nombre, String dni, String telefono, int matricula) {
+    private String matricula;
+
+    public Arquitecto(String nombre, String dni, String telefono, String matricula) {
         super(nombre, dni, telefono, 2000);
         this.matricula = matricula;
     }
 
-
-    public int getMatricula() {
+    public String getMatricula() {
         return this.matricula;
     }
 
-    public String creaPlanos() {
+    public String crearPlanos() {
         return "Creando mi proximo plano";
     }
 
+    @Override
+    public String toString() {
+        return "Arquitecto: " + super.toString() + " matricula: " + getMatricula();
+    }
 
 }

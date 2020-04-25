@@ -8,13 +8,19 @@ import tp.Obra;
 public class ODomestica extends Obra {
     private int habitaciones;
 
-    public ODomestica(String direccion, int mCuadrados, int estimado, double costoPorM, ArrayList<Empleado> personal, int habitaciones) {
+    public ODomestica(String direccion, int mCuadrados, int estimado, double costoPorM, ArrayList<Empleado> personal,
+            int habitaciones) {
         super(direccion, mCuadrados, estimado, costoPorM, personal);
         this.habitaciones = habitaciones;
     }
 
     public int getHabitaciones() {
         return habitaciones;
+    }
+
+    @Override
+    public String toString() {
+        return "Obra Domestica: " + super.toString() + " habitaciones: " + getHabitaciones();
     }
 
 }

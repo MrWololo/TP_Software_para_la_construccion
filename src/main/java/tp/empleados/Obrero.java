@@ -3,7 +3,7 @@ package tp.empleados;
 import tp.Empleado;
 import tp.empleados.interfaz.Construccion;
 
-public class Obrero extends Empleado implements Construccion{
+public class Obrero extends Empleado implements Construccion {
 
     private int edad;
 
@@ -19,6 +19,11 @@ public class Obrero extends Empleado implements Construccion{
     @Override
     public String construir() {
         return "Soy obrero y construyo";
+    }
+
+    @Override
+    public String toString() {
+        return "Obrero: " + super.toString() + " edad: " + getEdad();
     }
 
 }

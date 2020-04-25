@@ -30,4 +30,10 @@ public abstract class Empleado {
         return this.costo;
     }
 
+    @Override
+    public String toString() {
+        return "{" + " nombre='" + getNombre() + "'" + ", dni='" + getDni() + "'" + ", telefono='" + getTelefono() + "'"
+                + ", costo='" + getCosto() + "'" + "}";
+    }
+
 }

@@ -1,17 +1,16 @@
 package tp;
 
-import java.lang.ProcessBuilder.Redirect.Type;
 import java.util.ArrayList;
 
 import tp.empleados.Arquitecto;
 import tp.empleados.Maestro;
 import tp.empleados.Obrero;
 
-public class Obra {
+public abstract class Obra {
 
     private String direccion;
     private int mCuadrados;
-    private int estimado;
+    private int tEstimado;
     private double costoPorM;
     private ArrayList<Empleado> personal = new ArrayList<>();
 
@@ -20,7 +19,7 @@ public class Obra {
             this.personal.addAll(personal);
             this.direccion = direccion;
             this.mCuadrados = mCuadrados;
-            this.estimado = estimado;
+            this.tEstimado = estimado;
             this.costoPorM = costoPorM;
         }
 
@@ -64,8 +63,8 @@ public class Obra {
         return this.mCuadrados;
     }
 
-    public int getEstimado() {
-        return this.estimado;
+    public int getTEstimado() {
+        return this.tEstimado;
     }
 
     public double getCostoPorM() {
@@ -84,7 +83,13 @@ public class Obra {
             }
         }
 
-        return ((getCostoPorM() * getMCuadrados()) + (costoEmpleados * getEstimado()));
+        return ((getCostoPorM() * getMCuadrados()) + (costoEmpleados * getTEstimado()));
+    }
+
+    @Override
+    public String toString() {
+        return "direccion: " + getDireccion() + ", metros cuadrados: " + getMCuadrados() + ", tiempo Estimado: "
+                + getTEstimado() + ", costo Por Metro cuadrado: " + getCostoPorM();
     }
 
 }
